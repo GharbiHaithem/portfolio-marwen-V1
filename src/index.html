@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <style>
+    .imgbg {
+      position: absolute;
+      right: -50px;
+      top: 125px;
+      background: transparent;
+      width: 60%;
+      height: 400px;
+      transition: .5s;
+    }
+    .imgbg:hover {
+      background: #081b29;
+      opacity: 0.8;
+      width: 60%;
+      height: 100%;
+    }
+    main {
+      background: url('gharbi.png');
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 100px;
+    }
+    header {
+      z-index: 1000;
+    }
+    .image-container img {
+      width: 80%;
+      height: 80%;
+      object-fit: cover;
+      border: 5px solid rgb(200, 182, 182);
+      border-radius: 50%;
+    }
+    .rotating-circle {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      border: 5px solid green;
+      border-color: rgb(200, 182, 182) transparent rgb(200, 182, 182) transparent;
+      animation: rotate 5s linear infinite;
+    }
+    @keyframes rotate {
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+    .abutsectin {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 160px; /* Ajoutez une marge supérieure pour séparer du header */
+    }
+    .textstroke {
+      font-size: 45px;
+      color: transparent;
+      -webkit-text-stroke: 1px #00abf0;
+    }
+    .fade-out {
+      opacity: 1;
+      transition: opacity 0.5s ease; /* Ajoutez une transition pour un effet en douceur */
+    }
+
+    .fade-out.hidden {
+      opacity: 0;
+    }
+    .header{
+      z-index: 1000;
+      background-color: white;
+width: 100%;
+padding: 15px;
+
+    }
+    .list-menu{
+     display:flex;
+     align-items:center; 
+     gap: 10px;
+    }
+    .menu-bx{
+      display: none;
+    }
+    @media screen and (max-width:768px) {
+      .list-menu{
+        display: none;
+      }
+      .menu-bx{
+        display: block;
+        font-size: 30px;
+        background-color:var( --second-bg-color) ;
+        cursor: pointer;
+       
+      }
+      .background-section {
+  position: fixed;
+  top: 0;
+  left: 20%; /* Largeur de la nouvelle liste */
+  height: 100%;
+  z-index: 1000;
+  width: 80%; /* Partie restante de l'écran */
+  background-color: #0008; /* Couleur de fond de la section */
+}
+    }
+  
+    .new-list {
+     
+display: none;
+      }
+    
+     .nd {
+      position: absolute;
+        top: 60px;
+        left: 0;
+        height: 1000vh;
+        background-color: rgb(255, 255, 255);
+        color: #000000;
+        width: 20%;
+        position: absolute;
+display: block;
+      }
+    
+
+.background-section {
+  /* ... Autres styles ... */
+  display: none;
+}
+#album {
+
+width: 90%;
+margin: 0 auto;
+padding: 30px 20px;
+ /* Adjust the height as needed */
+}
+
+.image-container1 {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+}
+
+.image-container1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 10px;
+ 
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--second-bg-color);
+  border-radius: 20px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.image-container1:hover .overlay {
+  opacity: 0;
+
+}
+.gallery {
+            display: flex;
+            flex-wrap: wrap;
+           
+        }
+
+        .gallery-item {
+           
+            cursor: pointer;
+            flex-basis: 32%;
+        height: 400px;
+        }
+
+        .gallery-item img {
+             /* Ajoutez la valeur souhaitée pour flex-basis */
+            max-width: 100%;
+            width: 80%;
+            height: 80%; 
+          
+            transition: transform 0.3s ease-in-out;
+            border-radius: 20px;
+        }
+        .gallery-item img:hover{
+          transform: scale(1.2);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .lightbox-btn-prev {
+            left: 20px;
+        }
+
+        .lightbox-btn-next {
+            right: 20px;
+        }
+        .lightbox-btn-close{
+          top: 100px;
+          right: 50px;
+        }
+        .experience{
+          padding: 20px;
+          margin-bottom: 100px;
+          display: grid;
+              grid-template-columns: repeat(2,1fr);    
+               width: 60%;
+               margin: 0 auto;  
+          gap: 20px;
+       
+        }
+      
+    .bloc{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid  #00abf0;
+      padding: 20px 10px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease-in-out;
+    }
+    .bloc::before{
+content: "";
+position: absolute;
+top: 0;
+left:0;
+z-index: -1;
+background-color: #00abf0;
+background:linear-gradient(45deg , rgb(26, 26, 213) , #00abf0);
+        transition: .5s; 
+width: 0;
+height: 100%;
+    }
+    .bloc:hover::before{
+
+width: 100%;
+transform: scale(1.1);
+
+    }
+    .content{
+      margin-bottom: 0 !important;
+    }
+    .rounded-div{
+      width: 30px;
+      height: 30px;
+      box-shadow: 0 0 10px #00abf0;
+      border-radius: 50%;
+   
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+  </style>
+</head>
+<body>
+  <script src='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.js'></script>
+
+
+  <div class="header w-[100%] h-[60px] fixed px-10 py-5 top-0 left-0  ">
+    <nav class="max-w-screen-lg py-4 px-6 ">
+      <div class="flex items-center justify-between">
+        <div href="#" class="font-extrabold text-3xl" style="color:#081b29;">Gharbuch</div>
+        <div> <i class='menu-bx bx bx-menu' ></i></div>
+        <ul class="list-menu" style="color:#081b29;">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#album">Album</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <ul class="new-list  " >
+          <li><a href="#new-item-1">New Item 1</a></li>
+          <li><a href="#new-item-2">New Item 2</a></li>
+          <li><a href="#new-item-3">New Item 3</a></li>
+        </ul>
+      </div>
+    
+    </nav>
+  </div>
+  <section class="background-section"></section>
+ <section id="home" class="flex z-20 justify-between h-[]">
+  <section class="px-32 py-[15%] w-[50%] relative leading-6 border-3 border-red-500 ">
+    <h1 class="text-6xl font-semibold text-white">Hi , I m Gharbi Haithem</h1>
+    <p class="py-2  text-annimated"><h3>Frontend Developer</h3></p>
+    <p class="x mt-6 ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+    <div class="flex items-center justify-between gap-10 w-1/3 ">
+     <button class="xy w-full bg-maincolor p-5 rounded-lg">Hire me</button>
+    <button class="xy w-full bg-transparent text-maincolor    p-5 rounded-lg">Lets Talk</button>
+    </div>
+    <div class="aa fixed bottom-3 flex gap-10 w-[50%] h-20 ">
+     <span class="a border-2 rounded-full border-white w-16 h-16 flex items-center justify-center"><i class=' bx bxl-facebook-circle text-4xl'></i></span>
+     <span class="a border-2 rounded-full border-white w-16 h-16 flex items-center justify-center"><i class='bx bxl-instagram-alt text-4xl' ></i></span>
+     <span class="a border-2 rounded-full border-white w-16 h-16 flex items-center justify-center"><i class='bx bxl-youtube text-4xl' ></i></span>
+    </div>
+  
+   </section>
+  
+
+ </section>
+ <section class="h-[100vh] max-w-screen-sm mx-auto z-20 abutsectin items-start" id="about">
+  <div class="image-container">
+    <img src="gharbi.png" alt="Image" class="image" />
+    <div class="rotating-circle"></div>
+  </div>
+  <div class="mx-auto px-32 ">
+    <span class="textstroke" id="text1">Gharbi Haithem</span>
+  </div>
+  <p class="font-medium text-base w-[50%] mx-auto inset-2 px-32 leading-10">
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through 
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through 
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through 
+    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through 
+  </p>
+  
+</section>
+<section id="about" class="album h-[100vh] py-[10%]">
+
+</section>
+<section id="album" class="album h-[100vh] ">
+
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const menuIcon = document.querySelector('.menu-bx');
+  const newList = document.querySelector('.new-list');
+  const backgroundSection = document.querySelector('.background-section');
+
+  function toggleNewList() {
+    newList.classList.toggle('nd');
+    backgroundSection.style.display = newList.classList.contains('nd') ? 'block' : 'none';
+  }
+
+  menuIcon.addEventListener('click', function (event) {
+    toggleNewList();
+  });
+
+  document.addEventListener('click', function (event) {
+    const isClickInside = newList.contains(event.target) || menuIcon.contains(event.target);
+
+    if (!isClickInside) {
+      newList.classList.remove('nd');
+      backgroundSection.style.display = 'none';
+    }
+  });
+});
+
+</script>
+<script type="module">
+  import images from './image.data.js';
+  var currentIndex = 0; 
+  var albumSection = document.createElement('section');
+  albumSection.id = 'album';
+  var galleryContainer = document.createElement("div");
+    galleryContainer.classList.add("gallery");
+
+    images.forEach(function (image, index) {
+        var galleryItem = document.createElement("div");
+        galleryItem.classList.add("gallery-item");
+
+        var imgElement = document.createElement("img");
+        imgElement.src = image.url;
+        imgElement.alt = "Image " + (index + 1);
+        imgElement.classList.add("flex-basis-image"); // Ajoutez la classe pour flex-basis
+
+        imgElement.addEventListener("click", function () {
+            openLightbox(index);
+        });
+
+        galleryItem.appendChild(imgElement);
+        galleryContainer.appendChild(galleryItem);
+    });
+    albumSection.appendChild(galleryContainer);
+    document.body.appendChild(albumSection);
+
+    var lightbox = document.createElement("div");
+    lightbox.classList.add("lightbox");
+
+    var lightboxImage = document.createElement("img");
+
+    var prevButton = document.createElement("button");
+    prevButton.classList.add("lightbox-btn", "lightbox-btn-prev");
+    prevButton.innerHTML = "&lt;";
+    prevButton.addEventListener("click", function () {
+        navigateLightbox(-1);
+    });
+
+    var nextButton = document.createElement("button");
+    nextButton.classList.add("lightbox-btn", "lightbox-btn-next");
+    nextButton.innerHTML = "&gt;";
+    nextButton.addEventListener("click", function () {
+        navigateLightbox(1);
+    });
+    var closeButton = document.createElement("button");
+closeButton.classList.add("lightbox-btn", "lightbox-btn-close");
+closeButton.innerHTML = "X";
+closeButton.addEventListener("click", function () {
+    closeLightbox();
+});
+    lightbox.appendChild(prevButton);
+    lightbox.appendChild(lightboxImage);
+    lightbox.appendChild(nextButton);
+    lightbox.appendChild(closeButton);
+    document.body.appendChild(lightbox);
+
+    function openLightbox(index) {
+        lightboxImage.src = images[index].url;
+        lightboxImage.alt = "Image " + (index + 1);
+        lightbox.style.display = "flex";
+        currentIndex = index;
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = "none";
+    }
+
+    function navigateLightbox(direction) {
+        currentIndex += direction;
+
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1;
+        } else if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+
+        lightboxImage.src = images[currentIndex].url;
+        lightboxImage.alt = "Image " + (currentIndex + 1);
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeLightbox();
+        } else if (event.key === "ArrowLeft") {
+            navigateLightbox(-1);
+        } else if (event.key === "ArrowRight") {
+            navigateLightbox(1);
+        }
+    });
+    
+</script>
+
+<script type="module">
+import experiences from './experience.data.js';
+
+// Utilisez les données comme bon vous semble
+console.log(experiences);
+  // Sélectionnez le corps du document pour y ajouter les expériences
+  const body = document.body;
+var experience=  document.createElement('div');
+experience.className = 'experience';
+  // Itérez sur chaque expérience et créez un div pour l'afficher
+  experiences.forEach(exp => {
+    const roundedDiv = document.createElement('div');
+    roundedDiv.className = 'rounded-div';
+  
+    const content = document.createElement('div');
+    content.className = 'content';
+    const bloc = document.createElement('div');
+    bloc.className = 'bloc';
+
+    // Ajoutez le contenu de l'expérience au div
+    const titleParagraph = document.createElement('p');
+    titleParagraph.textContent = exp.experience;
+
+    const descriptionParagraph = document.createElement('p');
+    descriptionParagraph.textContent = exp.lieu;
+    const date = document.createElement('p');
+    date.textContent = exp.date;
+    const occupation = document.createElement('p');
+    occupation.textContent = exp.occupation;
+ 
+
+    content.appendChild(titleParagraph);
+    content.appendChild(descriptionParagraph);
+    content.appendChild(date);
+    content.appendChild(occupation);
+  
+    bloc.appendChild(roundedDiv)
+    bloc.appendChild(content)
+    // Ajoutez le div au corps du document
+    experience.appendChild(bloc)
+   
+    body.appendChild(experience);
+  });
+</script>
+
+
+
+
+
+</body>
+</html>
